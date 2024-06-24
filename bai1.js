@@ -1,6 +1,8 @@
 // Để in dữ liệu
 // Dùng hàm console.log(); (Cách sử dụng nhiều nhất)
 console.log("Tuan anh");
+// In dữ liệu với nền đỏ
+console.error("thông báo màu đỏ");
 
 // Để in dữ liệu theo dạng pop-up
 // Dùng hàm alert();
