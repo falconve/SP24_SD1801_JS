@@ -9,7 +9,7 @@
 // CÁCH KHAI BÁO KIỂU DỮ LIỆU SỐ
 let num1 = 1; // Khai báo biến num1 có giá trị là 1 (số nguyên)
 let num2 = 1.5; // Khai báo biến num2 có giá trị là 1.5 (số thực)
-let num3 = "2";
+let num3 = "2"; // thành kiểu chuỗi
 
 console.log(num1);
 console.log(num2);
@@ -74,14 +74,14 @@ console.log(Math.pow(2, 3)); // 2 mũ 3 = 8
 
 // .toFixed: Hàm giữ lại số thập phân sau dấu phẩy
 let number = 5.5608;
-let number1 = number.toFixed(3);
+let number1 = number.toFixed(3); // 5.561 => string
 
 console.log(number);
 // NÊN KIỂM TRA KIỂU DỮ LIỆU TRƯỚC KHI TÍNH TOÁN
 // SỬ DỤNG typeof
 console.log(typeof number1);
 // Để ép kiểu từ string sang number: viết dấu "+" trước tên biến
-console.log(+number1 + 1);
+console.log(+number1 + 1); // 6.561
 
 // BT: tìm số lớn nhất trong 3 số
 // let a = 1;
