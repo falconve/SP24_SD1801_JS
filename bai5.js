@@ -5,7 +5,6 @@
 // TOÁN TỬ 3 NGÔI
 // CẤU TRÚC ĐIỀU KIỆN
 // - [IF .. ELSE]
-// - [SWITCH .. CASE]
 // VÒNG LẶP
 // - FOR
 // - FOR .. OF
