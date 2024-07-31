@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>hoá đơn</h1>
+      <div class="hoa-don">
+        <div class="column">
+          <label for="" class="label-class">Khách hàng</label>
+          <input type="text" />
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Loại hàng</label>
+          <!-- Với những lựa chọn thì sử dụng 
+          sự kiện onchange 
+          -->
+          <select name="" id="chon-loai" onchange="chonLoai()">
+            <option value="0">Loại 1</option>
+            <option value="1">Loại 2</option>
+          </select>
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Đơn giá</label>
+          <input type="text" id="don-gia" />
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Số lượng</label>
+          <input type="text" id="so-luong" />
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Thành tiền</label>
+          <input type="text" id="thanh-tien" />
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Nơi nhận hàng</label>
+          <input type="radio" value="0" name="ship" onchange="chonShip()" />
+          Ngoại thành
+          <input type="radio" value="1" name="ship" onchange="chonShip()" /> Nội
+          thành
+        </div>
+        <div class="column">
+          <label for="" class="label-class">Phí vận chuyển</label>
+          <input type="text" id="phi-ship" />
+        </div>
+      </div>
+      <div class="wrapper-button">
+        <button class="dat-mua" onclick="tongTien()">Đặt mua</button>
+      </div>
+    </div>
+    <script>
+      function chonLoai() {
+        // Sử dụng querySelector để lấy ra đc lựa chọn của người dùng
+        let chonLoai = document.querySelector("#chon-loai").value;
+        let donGia = document.querySelector("#don-gia");
+        if (chonLoai == 0) {
+          donGia.value = 100;
+        } else {
+          donGia.value = 200;
+        }
+      }
+
+      function chonShip() {
+        // Sử dụng querySelector để lấy ra đc lựa chọn của người dùng
+        let chonShip = document.querySelector("[name='ship']:checked").value;
+
+        // BT: khi chọn nội thành phí ship  = 50
+        // khi chọn ngoại thành phí ship = 70
+        let phiShip = document.querySelector("#phi-ship");
+        if (chonShip == 0) {
+          phiShip.value = 50;
+        } else {
+          phiShip.value = 70;
+        }
+      }
+
+      function tongTien() {
+        // BT: tongTien =
+        let donGia = document.querySelector("#don-gia").value; // string
+        let soLuong = document.querySelector("#so-luong").value; // string
+        let phiShip = document.querySelector("#phi-ship").value; // string
+        let thanhTien = document.querySelector("#thanh-tien");
+
+        // Để tính toán
+        // phải dùng dấu + trước tên biến để ép kiểu sang kiểu sổ.
+        let tongTien = +soLuong * +donGia + +phiShip;
+        // Ghi tổng tiền vào ô input có id là thanh-tien
+        thanhTien.value = tongTien;
+      }
+    </script>
+  </body>
+</html>

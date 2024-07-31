@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slideshow</title>
+    <style>
+      .slide {
+        width: 1000px;
+        display: none;
+      }
+
+      .slide img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slideshow">
+      <div class="slide">
+        <img
+          src="https://farm3.staticflickr.com/2919/32726853103_ac1707e094_z.jpg"
+          alt=""
+        />
+      </div>
+      <div class="slide">
+        <img
+          src="https://camerabox.vn/uploads/news/2018_07/chup-anh-phong-canh-thu-vi.jpg"
+          alt=""
+        />
+      </div>
+      <div class="slide">
+        <img
+          src="https://media.hanamtv.vn/upload/image/202112/thumbnail/71039_21e0584d70e0e387de0473997146b478.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="button">
+      <button onclick="chuyenAnh(1)">Tiến</button>
+      <button onclick="chuyenAnh(-1)">Lùi</button>
+      <button onclick="start()">Start</button>
+      <button onclick="stop()">Stop</button>
+    </div>
+    <script>
+      // 1. CSS bằng JS
+      // 2. Event
+      // 3. document.querySelectorAll
+
+      // Khai báo biến vị trí ảnh
+      let slideIndex = 1; // ảnh đầu tiên
+
+      // Hàm chuyenAnh có nhiệm vụ lấy số lần ấn vào 2 nút tiến và lùi
+      function chuyenAnh(number) {
+        // slideIndex += number dùng để tăng số lần ấn nút tiến lên 1 đơn vị
+        hienThiAnh((slideIndex += number));
+      }
+
+      // Hàm hienThiAnh() có nhiệm vụ hiển thị ra ảnh
+      function hienThiAnh(n) {
+        // Lấy ra tất cả các ảnh
+        let slideImg = document.querySelectorAll(".slide");
+
+        // Ẩn ảnh trước đó và hiển thị ra ảnh tiếp theo
+        for (let i = 0; i < slideImg.length; i++) {
+          slideImg[i].style.display = "none";
+        }
+
+        // Kiểm tra nếu ấn tiến quá số lượng ảnh mình có
+        if (n > slideImg.length) {
+          slideIndex = 1;
+        }
+
+        // Kiểm tra nếu ấn lùi quá số lượng ảnh mình có
+        if (n < 1) {
+          slideIndex = slideImg.length;
+        }
+
+        // Hiển thị ra ảnh
+        slideImg[slideIndex - 1].style.display = "block";
+      }
+
+      // Hàm hienThiAnh luôn luôn dc chạy để hiển thị ra ảnh đầu tiên
+      hienThiAnh(slideIndex);
+
+      // Hàm chạy ảnh tự động
+      // Khai báo biến tên là chayTuDong không gán trị
+      let chayTudong;
+      function start() {
+        // setInterval:
+        // Dùng để thực hiện 1 công việc lặp đi lặp sau
+        // 1 khoảng thời gian
+
+        // Ảnh chạy tự động sau 1,5 giây (1500ms)
+        chayTudong = setInterval(function () {
+          chuyenAnh(1);
+        }, 1500);
+      }
+
+      // Hàm dừng chạy tự động
+      function stop() {
+        // muốn dừng chạy tự động thì sử dụng clearInterval
+        clearInterval(chayTudong);
+      }
+    </script>
+  </body>
+</html>
